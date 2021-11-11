@@ -40,8 +40,7 @@ SizedBox bottomContainer(
                   child: const Text("Replicate"),
                   onTap: () {
                     teamController.duplicateTeam(
-                      teamController.teamList[index],
-                    );
+                        teamController.teamList[index], context);
                   },
                   value: 3,
                 ),

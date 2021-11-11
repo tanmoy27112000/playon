@@ -17,7 +17,7 @@ class _TeamPageState extends State<TeamPage> {
       builder: (context, myType, child) {
         return PageView.builder(
           itemCount:
-              myType.teamList.length + 1 < 3 ? myType.teamList.length + 1 : 3,
+              myType.teamList.length + 1 <= 3 ? myType.teamList.length + 1 : 3,
           itemBuilder: (context, index) {
             return index < myType.teamList.length
                 ? TeamCard(myType, index)

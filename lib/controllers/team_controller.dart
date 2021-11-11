@@ -31,13 +31,22 @@ class TeamController extends ChangeNotifier {
     notifyListeners();
   }
 
-  duplicateTeam(UserTeam team) {
-    teamList.add(
-      UserTeam(
-        name: team.name,
-        playerList: team.playerList,
-      ),
-    );
+  duplicateTeam(UserTeam team, BuildContext context) {
+    if (teamList.length != 3) {
+      teamList.add(
+        UserTeam(
+          name: team.name,
+          playerList: team.playerList,
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("You can't add more than 3 teams"),
+        ),
+      );
+    }
+    notifyListeners();
   }
 
   void renameTeam(int index) {
