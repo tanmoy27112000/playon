@@ -156,12 +156,12 @@ class Player {
         weeklyPriceChangePercentage: json["weekly_price_change_percentage"],
         teamId: json["team_id"],
         headshot: Headshot.fromJson(json["headshot"]),
-        knownName: json["known_name"] == null ? null : json["known_name"],
+        knownName: json["known_name"],
         jerseyImage: Image.fromJson(json["jersey_image"]),
         score: json["score"],
         humanizeStatus: json["humanize_status"],
-        shirtNumber: json["shirt_number"] == null ? null : json["shirt_number"],
-        country: json["country"] == null ? null : json["country"],
+        shirtNumber: json["shirt_number"],
+        country: json["country"],
         isConstructor: json["is_constructor"],
         seasonScore: json["season_score"],
         driverData: json["driver_data"] == null
@@ -206,7 +206,7 @@ class Player {
         "weekly_price_change_percentage": weeklyPriceChangePercentage,
         "team_id": teamId,
         "headshot": headshot!.toJson(),
-        "known_name": knownName == null ? null : knownName,
+        "known_name": knownName,
         "jersey_image": jerseyImage!.toJson(),
         "score": score,
         "humanize_status": humanizeStatus,
@@ -466,7 +466,7 @@ class EnumValues<T> {
 
   Map<T, String> get reverse {
     if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
+      reverseMap = map.map((k, v) => MapEntry(v, k));
     }
     return reverseMap;
   }

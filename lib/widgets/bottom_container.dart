@@ -21,11 +21,71 @@ SizedBox bottomContainer(
           child: Center(
             child: PopupMenuButton(
               icon: const Icon(Icons.more_vert),
+              onSelected: (value) {
+                if (value == 1) {
+                  showModalBottomSheet<void>(
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (BuildContext context) {
+                      TextEditingController _controller =
+                          TextEditingController();
+                      return SizedBox(
+                          child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text('RENAME TEAM${index + 1}'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: TextField(
+                              controller: _controller,
+                              decoration: const InputDecoration(
+                                hintText: "Type team name",
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('Cancel'),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    teamController.renameTeam(
+                                        index, _controller.text);
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text("Rename"),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom),
+                          ),
+                        ],
+                      ));
+                    },
+                  );
+                }
+              },
               itemBuilder: (context) => [
                 PopupMenuItem(
                   child: const Text("Rename team"),
                   onTap: () {
-                    teamController.renameTeam(index);
+                    // teamController.renameTeam(index);
                   },
                   value: 1,
                 ),

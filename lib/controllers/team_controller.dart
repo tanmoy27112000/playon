@@ -9,11 +9,17 @@ class TeamController extends ChangeNotifier {
   bool _isLoading = true;
   List<UserTeam> teamList = [];
   late GlobalController globalController;
+  Player? selectedPlayer;
 
   bool get isLoading => _isLoading;
 
   loadingStatus(bool value) {
     _isLoading = value;
+    notifyListeners();
+  }
+
+  setSelectedPlayer(Player player) {
+    selectedPlayer = player;
     notifyListeners();
   }
 
@@ -49,8 +55,8 @@ class TeamController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void renameTeam(int index) {
-    teamList[index].name = "New team name";
+  void renameTeam(int index, String text) {
+    teamList[index].name = text;
     notifyListeners();
   }
 
