@@ -30,15 +30,29 @@ class _HomepageState extends State<Homepage> {
                   ? const CircularProgressIndicator()
                   : Consumer<TeamController>(
                       builder: (context, teamController, child) {
-                        return ElevatedButton(
-                          onPressed: () {
-                            teamController.generateTeam(context);
-                            Navigator.pushReplacementNamed(
-                              context,
-                              'teampage',
-                            );
-                          },
-                          child: const Text("Create Team 1"),
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                teamController.generateTeam(context);
+                                Navigator.pushNamed(
+                                  context,
+                                  'teampage',
+                                );
+                              },
+                              child: const Text("Create Team 1"),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  'playerlist',
+                                );
+                              },
+                              child: const Text("Check player list"),
+                            ),
+                          ],
                         );
                       },
                     )),

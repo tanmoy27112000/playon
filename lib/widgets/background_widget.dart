@@ -23,10 +23,6 @@ class BackgroundWidget extends StatelessWidget {
             ),
           ),
         ),
-        Image.asset(
-          'assets/logo.png',
-          height: 240,
-        ),
       ],
     );
   }

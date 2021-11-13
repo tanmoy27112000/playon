@@ -52,16 +52,18 @@ class _PlayerDetailPageState extends State<PlayerDetailPage> {
                         ),
                       ),
                       Row(
-                        children: const <Widget>[
-                          Padding(
+                        children: <Widget>[
+                          const Padding(
                             padding: EdgeInsets.all(8.0),
                             child: CircleAvatar(
                               radius: 5,
                             ),
                           ),
                           Text(
-                            "Injured",
-                            style: TextStyle(
+                            _teamController.selectedPlayer!.injured!
+                                ? "Injured"
+                                : "Healthy",
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 16,
                             ),
